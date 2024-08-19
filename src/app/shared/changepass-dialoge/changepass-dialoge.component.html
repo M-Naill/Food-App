@@ -1,0 +1,78 @@
+<div class="container">
+    <div class="row">
+        <div class="mx-auto">
+            <div class="login-card">
+                <div class="login-logo mx-auto"><img class="img-fluid" src="../../../../assets/4 3.png" alt="Background image"></div>
+                <div class="title mt-4 mx-5">
+                    <h3 class="fw-bold">Change Your Password?</h3>
+                    <p class="text-secondary">Enter your details below </p>
+                    <form [formGroup]="changePassForm" (ngSubmit)="onChangepass(changePassForm) ">
+                    <!-- <div class="mb-5">
+                        <div class="input-group mb-2 mt-3">
+                        <span class="input-group-text" id="basic-addon1"><i class="fa-solid fa-at"></i></span>
+                        <input formControlName="email" 
+                        type="email" class="form-control p-3" placeholder="Please Enter your Email" aria-label="Email" aria-describedby="basic-addon1">
+                        </div>
+                        <div class="text-danger mb-3" *ngIf="forgetPassForm.controls?.email?.touched">
+                            <span class="fs-6" *ngIf="forgetPassForm.controls?.email?.errors?.['required']">* Email is required field</span>
+                            <span class="fs-6" *ngIf="forgetPassForm.controls?.email?.errors?.['email']">* Please use a valid Email format</span>
+                        </div>
+                    </div> -->
+                    <div class="col">
+                        <div class="input-group mt-2">
+                        <span class="input-group-text" id="basic-addon1"><i class="fa-solid fa-lock"></i></span>
+                        <!-- here we use toggler on type of password or text -->
+                        <input formControlName="oldPassword"
+                        type="{{ showPassword ? 'text' : 'password' }}" class="form-control" placeholder="Old Password" aria-label="Old Password" aria-describedby="basic-addon1">
+                        <!-- here we use toggler on click -->
+                        <a (click)="togglePasswordVisibility()" class="pass-icon"><i class="fa fa-eye" [ngClass]="{'fa-eye-slash': showPassword}"></i></a>
+                        </div>
+                        <div class="text-danger mt-0" *ngIf="changePassForm.controls?.oldPassword?.touched">
+                            <span class="fs-6" *ngIf="changePassForm.controls?.oldPassword?.errors?.['required']">* Please Enter your password</span>
+                            <span class="fs-6" *ngIf="changePassForm.controls?.oldPassword?.errors?.['pattern']">* the password should have:
+
+                                1 uppercase letter
+                                1 lowercase letter
+                                A number
+                                A minimum length of 8.</span>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="input-group mt-2">
+                        <span class="input-group-text" id="basic-addon1"><i class="fa-solid fa-lock"></i></span>
+                        <!-- here we use toggler on type of password or text -->
+                        <input formControlName="newPassword"
+                        type="{{ showPassword ? 'text' : 'password' }}" class="form-control" placeholder="New Password" aria-label="New Password" aria-describedby="basic-addon1">
+                        <!-- here we use toggler on click -->
+                        <a (click)="togglePasswordVisibility()" class="pass-icon"><i class="fa fa-eye" [ngClass]="{'fa-eye-slash': showPassword}"></i></a>
+                        </div>
+                        <div class="text-danger mt-0" *ngIf="changePassForm.controls?.newPassword?.touched">
+                            <span class="fs-6" *ngIf="changePassForm.controls?.newPassword?.errors?.['required']">* Please Enter your password</span>
+                            <span class="fs-6" *ngIf="changePassForm.controls?.newPassword?.errors?.['pattern']">* the password should have:
+
+                                1 uppercase letter
+                                1 lowercase letter
+                                A number
+                                A minimum length of 8.</span>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="input-group mt-2">
+                        <span class="input-group-text" id="basic-addon1"><i class="fa-solid fa-lock"></i></span>
+                        <input formControlName="confirmNewPassword"
+                        type="{{ showPassword ? 'text' : 'password' }}" class="form-control" placeholder="Confirm New Password" aria-label="Confirm New Password" aria-describedby="basic-addon1">
+                        <a (click)="togglePasswordVisibility()" class="pass-icon"><i class="fa fa-eye" [ngClass]="{'fa-eye-slash': showPassword}"></i></a>
+                        </div>
+                        <span class="text-danger mt-0" *ngIf=" changePassForm?.get('newPassword')?.value && changePassForm?.get('confirmNewPassword')?.dirty && changePassForm?.get('newPassword')?.value !== changePassForm?.get('confirmNewPassword')?.value "> Password and Confirm Password must match </span>
+                    </div>
+                    
+
+                    <div>
+                        <button class="btn btn-success w-100 mt-2 p-2" [disabled]="changePassForm.invalid">Submit</button>
+                    </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

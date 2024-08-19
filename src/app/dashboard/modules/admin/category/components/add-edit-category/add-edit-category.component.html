@@ -1,0 +1,22 @@
+<!-- <h1 mat-dialog-title>Hi {{data.name}}</h1> -->
+
+<div class="container d-flex justify-content-center align-items-center flex-column position-relative">
+
+  <div class="d-flex justify-content-between ">
+  <p class="fs-2 fw-bold">Add Category</p>
+  <button class="position-absolute close-btn" (click)="onNoClick()" mat-icon-button matTooltip="Warn" color="warn" aria-label="close">
+    <mat-icon>cancel</mat-icon>
+  </button>
+</div>
+<div class="dial-input">
+  <mat-form-field>
+    <mat-label>Category Name</mat-label>
+    <input matInput [(ngModel)]="data.name">
+  </mat-form-field>
+</div>
+<div class="dial-btn mt-0"></div>
+<div mat-dialog-actions>
+  <button   [mat-dialog-close]="data.name" cdkFocusInitial class="btn btn-success w-100">Save</button>
+</div>
+</div>
+

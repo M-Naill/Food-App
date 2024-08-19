@@ -1,0 +1,45 @@
+
+
+section{
+    background-image: url(../../../../assets/bgimage.png);
+    background-position: center center;
+    background-size: cover;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+
+    .login-card{
+        background-color: #fff;
+        border-radius: 15px;
+        padding: 2rem;
+        width:746px;
+        height:561px;
+
+        .login-logo{
+           max-width: 366px; 
+
+        }
+        .form-control{
+            background-color: #F7F7F7;
+           
+        }
+        
+        .text-main{
+            color: green;
+        }
+    }
+}
+
+.links a{
+text-decoration: none;
+color: black;
+}
+
+.pass-icon{
+    position: absolute;
+    top: 5px;
+    right:10px;
+    color: #000;
+}

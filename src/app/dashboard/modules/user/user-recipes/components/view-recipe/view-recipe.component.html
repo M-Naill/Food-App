@@ -1,0 +1,45 @@
+<section>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-3">
+                <ng-container *ngIf="data.imagePath;else emptyImage" >
+                <img   
+                        [src]="'https://upskilling-egypt.com:3006/'+ data.imagePath" class="img-fluid rounded-3" alt="">
+                    </ng-container>
+                        <ng-template #emptyImage>
+                            <img src="../../../../../assets/dummy-recipe.png" alt="" class="img-fluid rounded-3">
+                        </ng-template>
+            </div>
+            <div class="col-md-9">
+                <p>
+                    <span class="fw-bold">Name : </span>
+                    <span>{{data.name}}</span>
+                </p>
+                <p>
+                    <span class="fw-bold">Price : </span>
+                    <span>{{data.price | currency}}</span>
+                </p>
+                <p>
+                    <span class="fw-bold">Description : </span>
+                    <span>{{data.description}}</span>
+                </p>
+                <p>
+                    <span class="fw-bold">Category : </span>
+                   <ng-container *ngFor="let item of data.category">
+
+                    <span>{{item.name}}</span>
+                   </ng-container>
+                    
+                </p>
+                <p>
+                    <span class="fw-bold">Tag : </span>
+                    <span>{{data.tag.name}}</span>
+                </p>
+            </div>
+            <div class="text-end">
+                <button [mat-dialog-close]="data.id">Add to Fav</button>
+                <button (click)="onNoClick()">Close</button>
+            </div>
+        </div>
+    </div>
+</section>

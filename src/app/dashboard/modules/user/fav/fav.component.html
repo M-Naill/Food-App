@@ -1,0 +1,34 @@
+<section>
+    <div class="container">
+        <div class="row">
+            <div class="card col-md-3 g-3" *ngFor="let item of listData?.data">
+                <div class="position-relative rounded rounded-2">
+                    <div class="card-image">
+                    <img  *ngIf="item.recipe.imagePath;else emptyImage" 
+                    [src]="'https://upskilling-egypt.com:3006/'+ item.recipe.imagePath" class="img-fluid rounded-3 card-img-top" alt="">
+                    <ng-template #emptyImage>
+                        <img src="../../../../../assets/dummy-recipe.png" alt="" class="img-fluid rounded-3 card-img-top">
+                    </ng-template>
+                </div>
+                    <div class="p-2 card-body">
+                        <h3 class="card-title">{{item.recipe.name}}</h3>
+                        <p class="card-text">{{item.recipe.description}}</p>
+                        <a (click)="onDeleteFav(item.id)" class="badge rounded-pill bg-light text-dark position-absolute top-0 end-0 m-2"><mat-icon class="text-danger">favorite</mat-icon></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div>
+        <mat-paginator #paginator
+           class="demo-paginator"
+           (page)="handlePageEvent($event)"
+           [length]="listData?.totalNumberOfRecords"
+           [pageSize]="pageSize"
+           [pageSizeOptions]="[5,10,50]"
+           [hidePageSize]="hidePageSize"
+           [pageIndex]="pageIndex"
+           aria-label="Select page">
+</mat-paginator>
+    </div>
+</section>

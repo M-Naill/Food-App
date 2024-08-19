@@ -1,0 +1,114 @@
+<section>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8 mx-auto">
+                <div class="register-card">
+                    <div class="login-logo mx-auto"><img class="img-fluid" src="../../../../assets/4 3.png" alt="Background image"></div>
+                    <div class="title mt-4 mx-5">
+                        <h3 class="fw-bold">Register</h3>
+                        <p class="text-secondary">Welcome Back! Please enter your details</p>
+                        <div class=""></div>
+                        <form [formGroup]="registerForm" (ngSubmit)="onRegister(registerForm)">
+                            <div class="row">
+                                <div class="col-4 my-auto">
+                                    <ngx-dropzone class="custom-dropzone" (change)="onSelect($event)">
+                                        <ngx-dropzone-label>Upload Image <i class="fa-solid fa-upload"></i></ngx-dropzone-label>
+                                        <!-- <ngx-dropzone-preview *ngFor="let f of files" [removable]="true" (removed)="onRemove(f)">
+                                            <ngx-dropzone-label>{{ f.name }} ({{ f.type }})</ngx-dropzone-label>
+                                        </ngx-dropzone-preview> -->
+                                        <ngx-dropzone-image-preview [removable]="true" (removed)="onRemove(f)"  ngProjectAs="ngx-dropzone-preview" *ngFor="let f of files" [file]="f">
+                                            <!-- <ngx-dropzone-label>{{ f.name }} ({{ f.type }})</ngx-dropzone-label> -->
+                                          </ngx-dropzone-image-preview>
+                                    </ngx-dropzone>
+                                </div>
+                                <div class="col-8">
+                                <div class="col">
+                                    <div class="input-group">
+                                    <span class="input-group-text" id="basic-addon1"><i class="fa-solid fa-user"></i></span>
+                                    <input formControlName="userName"
+                                    type="text" class="form-control" placeholder="Username" aria-label="Username" aria-describedby="basic-addon1">
+                                    </div>
+                                    <div class="text-danger mt-0" *ngIf="registerForm.controls?.userName?.touched">
+                                        <span class="fs-6" *ngIf="registerForm.controls?.userName?.errors?.['required']">* User Name is required field</span>
+                                    </div>
+                                </div>
+                                <div class="col">
+                                    <div class="input-group mt-2">
+                                    <span class="input-group-text" id="basic-addon1"><i class="fa-solid fa-at"></i></span>
+                                    <input formControlName="email"
+                                    type="email" class="form-control" placeholder="Email" aria-label="Email" aria-describedby="basic-addon1">
+                                    </div>
+                                    <div class="text-danger mt-0" *ngIf="registerForm.controls?.email?.touched">
+                                        <span class="fs-6" *ngIf="registerForm.controls?.email?.errors?.['required']">* Email is required field</span>
+                                        <span class="fs-6" *ngIf="registerForm.controls?.email?.errors?.['email']">* Please use a valid Email format</span>
+                                    </div>
+                                </div>
+                                <div class="col d-flex mx-auto ">
+                                <div class="col-5 ">
+                                    <div class="input-group mt-2">
+                                    <span class="input-group-text" id="basic-addon1"><i class="fa-solid fa-earth-americas"></i></span>
+                                    <input formControlName="country"
+                                    type="text" class="form-control" placeholder="Country" aria-label="Country" aria-describedby="basic-addon1">
+                                    </div>
+                                    <div class="text-danger mt-0" *ngIf="registerForm.controls?.country?.touched">
+                                        <span class="fs-6" *ngIf="registerForm.controls?.country?.errors?.['required']">* Country is required field</span>
+                                    </div>
+                                </div>
+                                <div class="col-6 ms-auto">
+                                    <div class="input-group mt-2">
+                                    <span class="input-group-text" id="basic-addon1"><i class="fa-solid fa-mobile-screen-button"></i></span>
+                                    <input formControlName="phoneNumber"
+                                    type="tel" class="form-control" placeholder="Phone Number" aria-label="Phone Number" aria-describedby="basic-addon1">
+                                    </div>
+                                    <div class="text-danger mt-0" *ngIf="registerForm.controls?.phoneNumber?.touched">
+                                        <span class="fs-6" *ngIf="registerForm.controls?.phoneNumber?.errors?.['required']">* User Name is required field</span>
+                                    </div>
+                                </div>
+                                </div>
+                                <!-- passowrd eye icon depend on flag isHide -->
+                                <div class="col">
+                                    <div class="input-group mt-2">
+                                    <span class="input-group-text" id="basic-addon1"><i class="fa-solid fa-lock"></i></span>
+                                    <!-- here we use toggler on type of password or text -->
+                                    <input formControlName="password"
+                                    [type]="isHide ?'password':'text'" class="form-control" placeholder="Password" aria-label="Password" aria-describedby="basic-addon1">
+                                    <!-- here we use toggler on click -->
+                                    <a (click)="isHide=!isHide" class="pass-icon"><i class="fa-solid"[class]="isHide?'fa-eye-slash':'fa-eye'" aria-hidden="true"></i></a>
+                                    </div>
+                                    <div class="text-danger mt-0" *ngIf="registerForm.controls?.password?.touched">
+                                        <span class="fs-6" *ngIf="registerForm.controls?.password?.errors?.['required']">* Please Enter your password</span>
+                                        <span class="fs-6" *ngIf="registerForm.controls?.password?.errors?.['pattern']">* the password should have:
+        
+                                            1 uppercase letter
+                                            1 lowercase letter
+                                            A number
+                                            A minimum length of 8.</span>
+                                    </div>
+                                </div>
+                                <div class="col">
+                                    <div class="input-group mt-2">
+                                    <span class="input-group-text" id="basic-addon1"><i class="fa-solid fa-lock"></i></span>
+                                    <input formControlName="confirmPassword"
+                                    [type]="isHidee ?'password':'text'" class="form-control" placeholder="Confirm Password" aria-label="Confirm Password" aria-describedby="basic-addon1">
+                                    <a (click)="isHidee=!isHidee" class="pass-icon"><i class="fa-solid"[class]="isHidee?'fa-eye-slash':'fa-eye'" aria-hidden="true"></i></a>
+                                    </div>
+                                    <span class="text-danger mt-0" *ngIf=" registerForm?.get('password')?.value && registerForm?.get('confirmPassword')?.dirty && registerForm?.get('password')?.value !== registerForm?.get('confirmPassword')?.value "> Password and Confirm Password must match </span>
+                                </div>
+                                </div>
+                            </div>
+                       
+
+                        <div class="d-flex text-end align-items-center justify-content-between reg-links mt-4">
+                            <a class="text-secondary" routerLink="/auth/login">Login now?</a>
+                            <a (click)="openDialog()" class="text-main" >Have a code?</a>
+                        </div>
+                        <div>
+                            <button class="btn btn-success w-100 mt-3" [disabled]="registerForm.invalid">Register</button>
+                        </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

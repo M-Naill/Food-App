@@ -1,0 +1,53 @@
+
+
+section{
+    background-image: url(../../../../assets/bgimage.png);
+    background-position: center center;
+    background-size: cover;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;  
+    
+    .register-card{
+        background-color: #fff;
+        border-radius: 15px;
+        padding: 2rem;
+        max-width: fit-content;
+        
+
+        .login-logo{
+           max-width: 366px; 
+
+        }
+        .form-control{
+            background-color: #F7F7F7;
+           
+        }
+        
+        .text-main{
+            color: green;
+        }
+        .custom-dropzone{
+            border-radius: 100%;
+            background-color: #F1FFF0 ;
+            height: 200px;
+            width: 200px;
+            border-color: #bfc0bf;
+            justify-content: center;
+            align-content: center;
+        }
+    }
+
+}
+
+.pass-icon{
+    position: absolute;
+    top: 5px;
+    right:10px;
+    color: #000;
+}
+
+.reg-links a{
+    text-decoration: none;
+}

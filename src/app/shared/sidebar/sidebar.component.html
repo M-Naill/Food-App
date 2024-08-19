@@ -1,0 +1,39 @@
+<section class="bg-main-color vh-100 position-fixed ms-0 pe-3 ">
+    <div class="sidebar-img my-3 w-25">
+        <img src="../../../assets/sidebar-logo.png" alt="logo no text" >
+    </div>
+
+    <div class="menu">
+        <!-- 
+        The classic way
+        <a routerLink="/dashboard/home" routerLinkActive="menu-item-active" class="menu-item">
+            <span>
+                <i class="fa-solid fa-home"></i>
+            </span>
+            <span>
+                Home
+            </span>
+        </a> -->
+
+        <ng-container *ngFor="let item of menuLinks">
+            <a [routerLink]="item.link" routerLinkActive="menu-item-active" class="menu-item" *ngIf="item.isActive" (click)="item.text === 'Change Password' && openChangePassDialoge($event)">
+                <span>
+                    <i [class]= "item.icon"></i>
+                </span>
+                <span>
+                    {{item.text}}
+                </span>
+            </a>
+        </ng-container>
+     
+
+        <!-- <a class="menu-item">
+            <span>
+                <i class="fa-solid fa-home"></i>
+            </span>
+            <span>
+                Home
+            </span>
+        </a> -->
+    </div>
+</section>

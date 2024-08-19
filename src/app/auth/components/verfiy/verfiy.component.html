@@ -1,0 +1,25 @@
+<div class="container verify-card mx-auto ">
+  <h1 class="fs-3 fw-bold" mat-dialog-title>Activate your Account</h1>
+  <div class="row d-flex">
+    <div class="col-md-6" mat-dialog-content>
+      <p>Please Enter your code</p>
+      <mat-form-field class="w-100">
+      <mat-label>Email</mat-label>
+      <!-- here we bind on the emnail in form to show it in the pop up -->
+      <input matInput [(ngModel)]="data.email">
+      </mat-form-field>
+      <mat-form-field class="w-100">
+      <mat-label>Code</mat-label>
+      <input matInput [(ngModel)]="data.code">
+      </mat-form-field>
+    </div>
+    <div class="verify-img col-md-6"><img class="img-fluid" src="../../../../assets/biometric-authentication-concept-privacy-recognition-biometric-access-control-illustration-fingerprint-screening-security-system-vector-flat-style_7737-2274.jpg" alt=""></div>
+  </div>
+  
+    <div class="mt-0" mat-dialog-actions>
+    <button class="close" mat-icon-button color="warn" aria-label="close" (click)="onNoClick()"><mat-icon>cancel</mat-icon></button>
+    <button class="btn btn-success" [mat-dialog-close]="data" >Activate</button>
+  <!-- [mat-dialog-close]="data" here we send the data email and code and send it after close  -->
+    </div>
+  
+</div>

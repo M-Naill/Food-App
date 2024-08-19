@@ -1,0 +1,55 @@
+<section>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8 mx-auto">
+                <div class="login-card d-flex flex-column">
+                    <div class="login-logo mx-auto"><img class="img-fluid" src="../../../../assets/4 3.png" alt="Background image"></div>
+                    <div class="title mt-4 mx-5">
+                        <h3 class="fw-bold">Log In</h3>
+                        <p class="text-secondary">Welcome Back! Please enter your details</p>
+                        <form [formGroup]="loginForm" (ngSubmit)="onLogin(loginForm) ">
+                        <div>
+                            <div class="input-group">
+                            <span class="input-group-text" id="basic-addon1"><i class="fa-solid fa-at"></i></span>
+                             <!-- should be the same name on the name created in login.ts  -->
+                            <input formControlName="email" 
+                            type="email" class="form-control p-2 " placeholder="Please Enter your Email" aria-label="Email" aria-describedby="basic-addon1">
+                            </div>
+                            <div class="text-danger mt-0" *ngIf="loginForm.controls?.email?.touched">
+                                <span class="fs-6 fw-medium" *ngIf="loginForm.controls?.email?.errors?.['required']">* Email is required field</span>
+                                <span class="fs-6 fw-medium" *ngIf="loginForm.controls?.email?.errors?.['email']">* Please use a valid Email format</span>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="input-group mt-3">
+                            <span class="input-group-text" id="basic-addon1"><i class="fa-solid fa-lock"></i></span>
+                            <input formControlName="password"
+                                    [type]="isHide ?'password':'text'" class="form-control" placeholder="Password" aria-label="Password" aria-describedby="basic-addon1">
+                                    <a (click)="isHide=!isHide" class="pass-icon"><i class="fa-solid"[class]="isHide?'fa-eye-slash':'fa-eye'" aria-hidden="true"></i></a>
+                            </div>
+                            <div class="text-danger" *ngIf="loginForm.controls?.password?.touched">
+                                <span class="fs-6 fw-medium" *ngIf="loginForm.controls?.password?.errors?.['required']">* Please Enter your password</span>
+                                <span class="fs-6 fw-medium" *ngIf="loginForm.controls?.password?.errors?.['pattern']">* the password should have:
+
+                                    1 uppercase letter
+                                    1 lowercase letter
+                                    A number
+                                    A minimum length of 8.</span>
+                            </div>
+                        </div>
+                        <div class="d-flex justify-content-between align-items-center links mt-4">
+                            <a routerLink="/auth/register">Register now?</a>
+                            <a class="text-main" routerLink="/auth/foreget-password">Forget Password?</a>
+                            
+                        </div>
+                        <div>
+                            <button class="btn btn-success w-100 mt-5 p-2" [disabled]="loginForm.invalid">Login</button>
+                        </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+

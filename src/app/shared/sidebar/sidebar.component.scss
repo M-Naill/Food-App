@@ -1,0 +1,26 @@
+section{
+    border-top-right-radius: 58px;
+    overflow: auto;
+}
+.sidebar-img img{
+    width: 167px;
+    height: 100%;
+}
+.menu-item{
+    display:block ;
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    margin: 10px 0px;
+    text-decoration: none;
+    color: #c6c6c6;
+    gap: 10px;
+}
+
+
+
+.menu-item-active{
+    background-color: rgba(0, 146, 64,0.10);
+    color: #fff;
+    border-left: #009247 solid 5px;
+}
